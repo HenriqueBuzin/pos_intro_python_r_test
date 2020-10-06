@@ -7,5 +7,7 @@ df2 <- aggregate(df["Populacao"], df["Regiao"], FUN = sum)
 
 slices <- c(df2$Populacao)
 lbls <- c(df2$Regiao)
-pie(slices, labels = lbls, main="População por Região")
-
+pct <- round(slices/sum(slices)*100)
+lbls <- paste(lbls, pct)
+lbls <- paste(lbls,"%",sep="")
+pie(slices,labels = lbls, col=rainbow(length(lbls)),main="Pie Chart of Countries")
